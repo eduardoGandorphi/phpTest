@@ -4,6 +4,7 @@
 <h1>Categorias <span class="float-right"><a class="btn btn-sm btn-success" href="categorias_form.php">Adicionar</a></span></h1>
 
 <?php
+//teste de commit
     require_once("dao/categoria.dao.php");
     $categoriaDAO = new CategoriaDAO();
     
