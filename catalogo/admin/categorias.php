@@ -24,7 +24,8 @@
         echo "<tr>";
         echo " <td>" . $categoria["codigo"] . "</td>";
         echo " <td>" . $categoria["nome"] . "</td>";
-        echo " <td> <a class=\"btn btn-sm btn-primary\" href=\"#\">Alterar</a> <a class=\"btn btn-sm btn-danger\" href=\"#\">Excluir</a> </td>";
+        echo " <td> <a class=\"btn btn-sm btn-primary\" href=\"categorias_form.php?codigo=".$categoria["codigo"].
+            "\">Alterar</a> <a class=\"btn btn-sm btn-danger\" href=\"categorias_grava.php?excluir=".$categoria["codigo"]."\">Excluir</a> </td>";
         echo "</tr>";
     }
 ?>        

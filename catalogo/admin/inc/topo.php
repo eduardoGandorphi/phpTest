@@ -49,9 +49,14 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categorias.php">Categorias</a>
-          </li>            
+          </li>  
+          <li class="nav-item">
+            <a class="nav-link" href="usuarios.php">Usuários</a>
+          </li>             
         </ul>
-        
+        <div class="navbar-text">
+            <?=$_SESSION["usuario.nome"]?> <a href="logout.php">sair</a>
+        </div>
       </div>
     </nav>
     <main role="main" class="container">

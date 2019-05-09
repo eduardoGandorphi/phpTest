@@ -4,16 +4,10 @@
 <h1>Produtos <span class="float-right"><a class="btn btn-sm btn-success" href="produtos_form.php">Adicionar</a></span></h1>
 
 <?php
-    //Dados Fictícios
-    $categoriasList = array(
-        array("codigo"=>1, "nome"=>"Bebidas"), 
-        array("codigo"=> 2, "nome"=>"Alimentos"),
-        array("codigo"=> 3, "nome"=>"Vestuário"),
-        array("codigo"=> 4, "nome"=>"Eletrodomésticos"), 
-        array("codigo"=> 5, "nome"=>"Eletroeletrônicos"),
-        array("codigo"=> 6, "nome"=>"Cama, Mesa e Banho")
-
-    );
+    require_once("dao/produto.dao.php");
+    $produtoDAO = new ProdutoDAO();
+    
+    $produtosList = $produtoDAO->ListarTudo();
 
 ?>
 
@@ -21,17 +15,23 @@
     <thead>
         <tr>
             <th style="width: 70px">Código</th>
-            <th>Nome</th>
+            <th>Título</th>
+            <th>Preço</th>
+            <th>Categoria</th>
+            <th>Destaque?</th>
             <th style="width: 180px; max-width: 180px;">Ação</th>
         </tr>
     </thead>
     <tbody>
 <?php        
-    foreach($categoriasList as &$categoria){
+    foreach($produtosList as &$produto){
         echo "<tr>";
-        echo " <td>" . $categoria["codigo"] . "</td>";
-        echo " <td>" . $categoria["nome"] . "</td>";
-        echo " <td> <a class=\"btn btn-sm btn-primary\" href=\"#\">Alterar</a> <a class=\"btn btn-sm btn-danger\" href=\"#\">Excluir</a> </td>";
+        echo " <td>" . $produto["codigo"] . "</td>";
+        echo " <td>" . $produto["titulo"] . "</td>";
+        echo " <td>" . number_format($produto["preco"],2,",",".") . "</td>";
+        echo " <td>" . $produto["categoriacodigo"] . "</td>";
+        echo " <td>" . $produto["destaque"] . "</td>";
+        echo " <td> <a class=\"btn btn-sm btn-primary\" href=\"produtos_form.php?codigo=".$produto["codigo"]."\">Alterar</a> <a class=\"btn btn-sm btn-danger\" href=\"produtos_grava.php?excluir=".$produto["codigo"]."\">Excluir</a> </td>";
         echo "</tr>";
     }
 ?>        

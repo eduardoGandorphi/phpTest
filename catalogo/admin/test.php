@@ -1,7 +1,8 @@
 <!-- test.php -->
 <?php
 
-    require_once("inc/conexao.php");
-    $conn = new Conexao();
+echo uniqid();
+echo "<br>";
+echo md5(uniqid());
 
 ?>

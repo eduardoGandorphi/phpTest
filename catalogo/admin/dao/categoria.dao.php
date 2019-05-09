@@ -1,25 +1,24 @@
 <?php
-require_once("inc/conexao.php");
 
-class CategoriaDAO extends Conexao {
+require_once(__DIR__ . "/generic.dao.php");
+
+class CategoriaDAO extends GenericDAO {
     
-    function ListarTudo() {
+    function __construct(){
+        parent::__construct();
         
-        $resultado = $this->query("SELECT * FROM categoria ORDER BY nome");
-        $resultado->setFetchMode(PDO::FETCH_ASSOC);
-        $categorias = $resultado->fetchAll();
+        $this->sqlInsert = "INSERT INTO categoria (nome) VALUES (?)";
         
-        return $categorias;
+        $this->sqlSelectAll = "SELECT * FROM categoria ORDER BY nome";
+        
+        $this->sqlSelectOne = "SELECT * FROM categoria 
+                                WHERE codigo = ?";
+        $this->sqlUpdate = "UPDATE categoria
+                                   SET nome = ?
+                                   WHERE codigo = ? ";
+        $this->sqlDelete = "DELETE FROM categoria
+                                   WHERE  codigo = ?";
     }
     
-    function Inserir($valores) {
-        $comando = $this->prepare("INSERT INTO categoria (nome) VALUES (?)");
-        try{
-            $comando->execute($valores);
-            return true;
-        } catch(Exception $e){
-            return false;
-        }
-    }
 }
 ?>

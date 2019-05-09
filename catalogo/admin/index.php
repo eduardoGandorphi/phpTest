@@ -22,6 +22,11 @@
       <h1>Terra Produtiva</h1>
         
       <h5 class="h5 mb-3 font-weight-normal">Informe seu Email e Senha para prosseguir</h5>
+        
+      <?php if (isset($_GET["erro"])) {?>
+        <div class="alert alert-danger"><?=$_GET["erro"]?></div>
+      <?php }?>
+        
       <label for="Email" class="sr-only">Email</label>
       <input type="email" id="Email" name="Email" class="form-control" placeholder="Email de Usuário" required autofocus>
         
